@@ -4,6 +4,7 @@
   "minimum-stability": "stable",
   "license": "GPL-2.0",
   "require": {
+    "ext-mbstring": "*",
     "videlalvaro/php-amqplib": "~2.4"
   },
   "require-dev": {
