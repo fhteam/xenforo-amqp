@@ -1,0 +1,12 @@
+{
+  "name": "forumhouseteam/xenforo-amqp",
+  "description": "AMQP library for using in XenForo addons",
+  "minimum-stability": "stable",
+  "license": "GPL-2.0",
+  "require": {
+    "videlalvaro/php-amqplib": "~2.4"
+  },
+  "require-dev": {
+    "zendframework/zendframework1": "~1.12"
+  }
+}
