@@ -8,5 +8,10 @@
   },
   "require-dev": {
     "zendframework/zendframework1": "~1.12"
+  },
+  "autoload": {
+    "psr-4": {
+      "Forumhouse\\XenForoAmqp\\": "src/"
+    }
   }
 }
