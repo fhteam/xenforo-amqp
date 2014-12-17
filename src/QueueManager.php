@@ -61,7 +61,7 @@ class QueueManager
         $queueName = $this->declareQueue($queueName, $queueConfig);
 
         if (is_array($body)) {
-            $body = json_encode($body);
+            $body = json_encode($body, JSON_UNESCAPED_UNICODE);
         }
 
         $message = new AMQPMessage($body, $messageProperties);
@@ -91,7 +91,7 @@ class QueueManager
         $queueName = $this->declareDelayedQueue($queueName, $queueConfig, $delay);
 
         if (is_array($body)) {
-            $body = json_encode($body);
+            $body = json_encode($body, JSON_UNESCAPED_UNICODE);
         }
 
         $message = new AMQPMessage($body, $messageProperties);
