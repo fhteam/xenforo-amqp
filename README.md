@@ -10,14 +10,16 @@ Library follows PSR4 so installation is a bit different from what we can see in 
 
 So, to use this library you can directly include the script into your source or do the following:
 
- - Install composer into your system or into XenForo root: https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx
+ - Install composer into your system or into XenForo root: 
+ https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx
  - Run ```composer init``` in your XenForo root to create composer.json: https://getcomposer.org/doc/03-cli.md#init
- - Run ```composer require forumhouseteam/xenforo-amqp:dev-master --no-dev``` to install this package 
- (--no-dev skips packages added for syntax highlighting ony like Zend Framework): 
+ - Run ```composer require --update-no-dev forumhouseteam/xenforo-amqp:dev-master``` to install this package 
+ (```--update-no-dev``` skips packages added for syntax highlighting ony like Zend Framework): 
  https://getcomposer.org/doc/03-cli.md#require
  - Put a line ```require_once(__DIR__ . '/../vendor/autoload.php');``` into your library/config.php to add composer 
  autoloader into XenForo's autoloading chain
- - Now you can use all composer packages in your development process and easily manage them using composer executable
+ - Now you can use all composer packages (together with ours) in your development process and easily manage them 
+ using composer executable
  
  
 Configuration
