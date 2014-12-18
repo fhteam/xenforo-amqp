@@ -108,12 +108,15 @@ class QueueManager
      */
     protected function declareQueue($queueName, Zend_Config $queueConfig)
     {
+        $autoDelete =
+            $queueConfig->queue_flags->auto_delete === null ? true : (bool)$queueConfig->queue_flags->auto_delete;
+
         $this->channel->queue_declare(
             $queueName,
             (bool)$queueConfig->queue_flags->passive,
             (bool)$queueConfig->queue_flags->durable,
             (bool)$queueConfig->queue_flags->exclusive,
-            (bool)$queueConfig->queue_flags->auto_delete,
+            $autoDelete,
             (bool)$queueConfig->queue_flags->nowait,
             $queueConfig->queue_flags->arguments,
             $queueConfig->queue_flags->ticket
@@ -133,8 +136,11 @@ class QueueManager
      */
     protected function declareDelayedQueue($destinationQueueName, Zend_Config $queueConfig, $delay)
     {
+        $autoDelete =
+            $queueConfig->queue_flags->auto_delete === null ? true : (bool)$queueConfig->queue_flags->auto_delete;
+
         $deferredQueueName = $destinationQueueName . '_deferred_' . $delay;
-        $flags = array_replace([
+        $flags = array_replace(array(
             'queue' => '',
             'passive' => false,
             'durable' => false,
@@ -143,16 +149,16 @@ class QueueManager
             'nowait' => false,
             'arguments' => null,
             'ticket' => null,
-        ], $queueConfig->queue_flags->toArray(), [
+        ), $queueConfig->queue_flags->toArray(), array(
             'queue' => $deferredQueueName,
             'durable' => true,
-            'arguments' => [
-                'x-dead-letter-exchange' => ['S', ''],
-                'x-dead-letter-routing-key' => ['S', $destinationQueueName],
-                'x-message-ttl' => ['I', $delay * 1000],
-            ],
-        ]);
-        call_user_func_array([$this->channel, 'queue_declare'], $flags);
+            'arguments' => array(
+                'x-dead-letter-exchange' => array('S', ''),
+                'x-dead-letter-routing-key' => array('S', $destinationQueueName),
+                'x-message-ttl' => array('I', $delay * 1000),
+            ),
+        ));
+        call_user_func_array(array($this->channel, 'queue_declare'), $flags);
         return $deferredQueueName;
     }
 }
