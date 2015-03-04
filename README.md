@@ -6,6 +6,9 @@ AMQP client library for XenForo to use servers like RabbitMQ from XenForo
 Installation
 ------------
 
+*Please do note, that package name has changed to `fhteam/xenforo-amqp`.* Old name should still work though it will
+no longer be maintained.
+
 Library follows PSR4 so installation is a bit different from what we can see in all XenForo addons
 
 So, to use this library you can directly include the script into your source or do the following:
@@ -13,7 +16,7 @@ So, to use this library you can directly include the script into your source or 
  - Install composer into your system or into XenForo root: 
  https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx
  - Run ```composer init``` in your XenForo root to create composer.json: https://getcomposer.org/doc/03-cli.md#init
- - Run ```composer require --update-no-dev forumhouseteam/xenforo-amqp:dev-master``` to install this package 
+ - Run ```composer require --update-no-dev fhteam/xenforo-amqp:dev-master``` to install this package 
  (```--update-no-dev``` skips packages added for syntax highlighting ony like Zend Framework): 
  https://getcomposer.org/doc/03-cli.md#require
  - Put a line ```require_once(__DIR__ . '/../vendor/autoload.php');``` into your library/config.php to add composer 

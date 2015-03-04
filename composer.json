@@ -1,5 +1,5 @@
 {
-  "name": "forumhouseteam/xenforo-amqp",
+  "name": "fhteam/xenforo-amqp",
   "description": "AMQP library for using in XenForo addons",
   "minimum-stability": "stable",
   "license": "GPL-2.0",
